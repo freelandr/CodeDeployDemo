@@ -21,7 +21,7 @@ jobs:
         aws deploy create-deployment \
           --application-name CodeDeployName \
           --deployment-group-name CodeDeployDemoGroup \
-          --deploy-config-name CodeDeployDefault.OneAtATime \
+          --deployment-config-name CodeDeployDefault.OneAtATime \
           --s3-location bucket=codedeploy-release-artifacts-demo,key=CodeDeployDemo.zip,bundleType=zip
   abort:
     runs-on: ubuntu-latest
