@@ -19,8 +19,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Push revision
       run: |
-        aws deploy push \
+        zip -r CodeDeployDemo.zip ./ -x *.git* *.github*
+        aws s3 cp CodeDeployDemo.zip s3://codedeploy-release-artifacts-demo/CodeDeployDemo.zip
+        aws deploy register-application-revision \
           --application-name CodeDeployDemo \
-          --s3-location s3://codedeploy-release-artifacts-demo/CodeDeployDemo.zip \
-          --source ./ \
+          --s3-location bucket=codedeploy-release-artifacts-demo,key=CodeDeployDemo.zip,bundleType=zip \
           --description ${{ github.sha }}

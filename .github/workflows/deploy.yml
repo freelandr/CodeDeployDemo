@@ -19,7 +19,7 @@ jobs:
     - name: Deploy using CodeDeploy
       run: |
         aws deploy create-deployment \
-          --application-name CodeDeployName \
+          --application-name CodeDeployDemo \
           --deployment-group-name CodeDeployDemoGroup \
           --deployment-config-name CodeDeployDefault.OneAtATime \
           --s3-location bucket=codedeploy-release-artifacts-demo,key=CodeDeployDemo.zip,bundleType=zip
